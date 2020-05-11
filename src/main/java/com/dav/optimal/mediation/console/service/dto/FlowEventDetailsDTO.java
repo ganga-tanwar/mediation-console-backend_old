@@ -1,7 +1,7 @@
 package com.dav.optimal.mediation.console.service.dto;
 
 import io.swagger.annotations.ApiModel;
-import java.time.LocalDate;
+import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -26,7 +26,7 @@ public class FlowEventDetailsDTO implements Serializable {
     private UUID flowId;
 
     @NotNull
-    private LocalDate transactionDate;
+    private Instant transactionDate;
 
     @NotNull
     @Size(max = 100)
@@ -47,6 +47,8 @@ public class FlowEventDetailsDTO implements Serializable {
     @NotNull
     private String errorCodeRetriable;
 
+
+    private Long flowIdId;
     
     public Long getId() {
         return id;
@@ -80,11 +82,11 @@ public class FlowEventDetailsDTO implements Serializable {
         this.flowId = flowId;
     }
 
-    public LocalDate getTransactionDate() {
+    public Instant getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -128,6 +130,14 @@ public class FlowEventDetailsDTO implements Serializable {
         this.errorCodeRetriable = errorCodeRetriable;
     }
 
+    public Long getFlowIdId() {
+        return flowIdId;
+    }
+
+    public void setFlowIdId(Long flowDetailsId) {
+        this.flowIdId = flowDetailsId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -162,6 +172,7 @@ public class FlowEventDetailsDTO implements Serializable {
             ", errorCode='" + getErrorCode() + "'" +
             ", errorInfo='" + getErrorInfo() + "'" +
             ", errorCodeRetriable='" + getErrorCodeRetriable() + "'" +
+            ", flowIdId=" + getFlowIdId() +
             "}";
     }
 }

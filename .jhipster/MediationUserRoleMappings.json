@@ -26,7 +26,7 @@
         },
         {
             "fieldName": "createdDate",
-            "fieldType": "LocalDate",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
@@ -41,23 +41,27 @@
         },
         {
             "fieldName": "modifiedDate",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         }
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "mediationUsers",
             "otherEntityRelationshipName": "mediationUserId",
             "relationshipValidateRules": "required",
-            "relationshipName": "mediationUserId"
+            "relationshipName": "mediationUserId",
+            "otherEntityField": "id",
+            "ownerSide": true
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "mediationRoles",
             "otherEntityRelationshipName": "mediationRoleId",
             "relationshipValidateRules": "required",
-            "relationshipName": "mediationRoleId"
+            "relationshipName": "mediationRoleId",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20200511082100",

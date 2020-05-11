@@ -54,7 +54,7 @@
         },
         {
             "fieldName": "createdDate",
-            "fieldType": "LocalDate",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
@@ -69,16 +69,16 @@
         },
         {
             "fieldName": "modifiedDate",
-            "fieldType": "LocalDate"
+            "fieldType": "Instant"
         }
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-one",
             "otherEntityName": "mediationUserRoleMappings",
             "otherEntityRelationshipName": "mediationUserId",
             "relationshipName": "mediationUserId",
-            "otherEntityField": "id"
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200511081900",

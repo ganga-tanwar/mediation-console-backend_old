@@ -33,7 +33,7 @@
             <column name="file_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="transaction_date" type="date">
+            <column name="transaction_date" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="transaction_id" type="${uuidType}">
@@ -54,11 +54,9 @@
             <column name="acknowledgment_received" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
-            <column name="flow_id_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="flow_details" columnName="transaction_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200511082200-1-relations" author="jhipster">
@@ -86,7 +84,7 @@
             <column name="source" type="string"/>
             <column name="destination" type="string"/>
             <column name="file_name" type="string"/>
-            <column name="transaction_date" type="date"/>
+            <column name="transaction_date" type="datetime"/>
             <column name="transaction_id" type="${uuidType}"/>
             <column name="format" type="string"/>
             <column name="source_endpoint_interface" type="string"/>

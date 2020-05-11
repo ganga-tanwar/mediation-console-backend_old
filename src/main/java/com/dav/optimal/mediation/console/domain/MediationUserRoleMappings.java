@@ -6,9 +6,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -40,20 +38,24 @@ public class MediationUserRoleMappings implements Serializable {
 
     @NotNull
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @Size(max = 100)
     @Column(name = "modified_by", length = 100)
     private String modifiedBy;
 
     @Column(name = "modified_date")
-    private LocalDate modifiedDate;
+    private Instant modifiedDate;
 
-    @OneToMany(mappedBy = "mediationUserId")
-    private Set<MediationUsers> mediationUserIds = new HashSet<>();
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private MediationUsers mediationUserId;
 
-    @OneToMany(mappedBy = "mediationRoleId")
-    private Set<MediationRoles> mediationRoleIds = new HashSet<>();
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private MediationRoles mediationRoleId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -103,16 +105,16 @@ public class MediationUserRoleMappings implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public MediationUserRoleMappings createdDate(LocalDate createdDate) {
+    public MediationUserRoleMappings createdDate(Instant createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -129,67 +131,43 @@ public class MediationUserRoleMappings implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDate getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public MediationUserRoleMappings modifiedDate(LocalDate modifiedDate) {
+    public MediationUserRoleMappings modifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
-    public Set<MediationUsers> getMediationUserIds() {
-        return mediationUserIds;
+    public MediationUsers getMediationUserId() {
+        return mediationUserId;
     }
 
-    public MediationUserRoleMappings mediationUserIds(Set<MediationUsers> mediationUsers) {
-        this.mediationUserIds = mediationUsers;
+    public MediationUserRoleMappings mediationUserId(MediationUsers mediationUsers) {
+        this.mediationUserId = mediationUsers;
         return this;
     }
 
-    public MediationUserRoleMappings addMediationUserId(MediationUsers mediationUsers) {
-        this.mediationUserIds.add(mediationUsers);
-        mediationUsers.setMediationUserId(this);
+    public void setMediationUserId(MediationUsers mediationUsers) {
+        this.mediationUserId = mediationUsers;
+    }
+
+    public MediationRoles getMediationRoleId() {
+        return mediationRoleId;
+    }
+
+    public MediationUserRoleMappings mediationRoleId(MediationRoles mediationRoles) {
+        this.mediationRoleId = mediationRoles;
         return this;
     }
 
-    public MediationUserRoleMappings removeMediationUserId(MediationUsers mediationUsers) {
-        this.mediationUserIds.remove(mediationUsers);
-        mediationUsers.setMediationUserId(null);
-        return this;
-    }
-
-    public void setMediationUserIds(Set<MediationUsers> mediationUsers) {
-        this.mediationUserIds = mediationUsers;
-    }
-
-    public Set<MediationRoles> getMediationRoleIds() {
-        return mediationRoleIds;
-    }
-
-    public MediationUserRoleMappings mediationRoleIds(Set<MediationRoles> mediationRoles) {
-        this.mediationRoleIds = mediationRoles;
-        return this;
-    }
-
-    public MediationUserRoleMappings addMediationRoleId(MediationRoles mediationRoles) {
-        this.mediationRoleIds.add(mediationRoles);
-        mediationRoles.setMediationRoleId(this);
-        return this;
-    }
-
-    public MediationUserRoleMappings removeMediationRoleId(MediationRoles mediationRoles) {
-        this.mediationRoleIds.remove(mediationRoles);
-        mediationRoles.setMediationRoleId(null);
-        return this;
-    }
-
-    public void setMediationRoleIds(Set<MediationRoles> mediationRoles) {
-        this.mediationRoleIds = mediationRoles;
+    public void setMediationRoleId(MediationRoles mediationRoles) {
+        this.mediationRoleId = mediationRoles;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

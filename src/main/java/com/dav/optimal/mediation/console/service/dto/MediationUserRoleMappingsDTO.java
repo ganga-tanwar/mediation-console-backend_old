@@ -1,7 +1,7 @@
 package com.dav.optimal.mediation.console.service.dto;
 
 import io.swagger.annotations.ApiModel;
-import java.time.LocalDate;
+import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -26,13 +26,17 @@ public class MediationUserRoleMappingsDTO implements Serializable {
     private String createdBy;
 
     @NotNull
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @Size(max = 100)
     private String modifiedBy;
 
-    private LocalDate modifiedDate;
+    private Instant modifiedDate;
 
+
+    private Long mediationUserIdId;
+
+    private Long mediationRoleIdId;
     
     public Long getId() {
         return id;
@@ -66,11 +70,11 @@ public class MediationUserRoleMappingsDTO implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -82,12 +86,28 @@ public class MediationUserRoleMappingsDTO implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDate getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public Long getMediationUserIdId() {
+        return mediationUserIdId;
+    }
+
+    public void setMediationUserIdId(Long mediationUsersId) {
+        this.mediationUserIdId = mediationUsersId;
+    }
+
+    public Long getMediationRoleIdId() {
+        return mediationRoleIdId;
+    }
+
+    public void setMediationRoleIdId(Long mediationRolesId) {
+        this.mediationRoleIdId = mediationRolesId;
     }
 
     @Override
@@ -121,6 +141,8 @@ public class MediationUserRoleMappingsDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", modifiedBy='" + getModifiedBy() + "'" +
             ", modifiedDate='" + getModifiedDate() + "'" +
+            ", mediationUserIdId=" + getMediationUserIdId() +
+            ", mediationRoleIdId=" + getMediationRoleIdId() +
             "}";
     }
 }

@@ -20,8 +20,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,9 +57,8 @@ public class FlowDetailsResourceIT {
     private static final String DEFAULT_FILE_NAME = "AAAAAAAAAA";
     private static final String UPDATED_FILE_NAME = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_TRANSACTION_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_TRANSACTION_DATE = LocalDate.now(ZoneId.systemDefault());
-    private static final LocalDate SMALLER_TRANSACTION_DATE = LocalDate.ofEpochDay(-1L);
+    private static final Instant DEFAULT_TRANSACTION_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_TRANSACTION_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final UUID DEFAULT_TRANSACTION_ID = UUID.randomUUID();
     private static final UUID UPDATED_TRANSACTION_ID = UUID.randomUUID();
@@ -961,59 +960,6 @@ public class FlowDetailsResourceIT {
 
     @Test
     @Transactional
-    public void getAllFlowDetailsByTransactionDateIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        flowDetailsRepository.saveAndFlush(flowDetails);
-
-        // Get all the flowDetailsList where transactionDate is greater than or equal to DEFAULT_TRANSACTION_DATE
-        defaultFlowDetailsShouldBeFound("transactionDate.greaterThanOrEqual=" + DEFAULT_TRANSACTION_DATE);
-
-        // Get all the flowDetailsList where transactionDate is greater than or equal to UPDATED_TRANSACTION_DATE
-        defaultFlowDetailsShouldNotBeFound("transactionDate.greaterThanOrEqual=" + UPDATED_TRANSACTION_DATE);
-    }
-
-    @Test
-    @Transactional
-    public void getAllFlowDetailsByTransactionDateIsLessThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        flowDetailsRepository.saveAndFlush(flowDetails);
-
-        // Get all the flowDetailsList where transactionDate is less than or equal to DEFAULT_TRANSACTION_DATE
-        defaultFlowDetailsShouldBeFound("transactionDate.lessThanOrEqual=" + DEFAULT_TRANSACTION_DATE);
-
-        // Get all the flowDetailsList where transactionDate is less than or equal to SMALLER_TRANSACTION_DATE
-        defaultFlowDetailsShouldNotBeFound("transactionDate.lessThanOrEqual=" + SMALLER_TRANSACTION_DATE);
-    }
-
-    @Test
-    @Transactional
-    public void getAllFlowDetailsByTransactionDateIsLessThanSomething() throws Exception {
-        // Initialize the database
-        flowDetailsRepository.saveAndFlush(flowDetails);
-
-        // Get all the flowDetailsList where transactionDate is less than DEFAULT_TRANSACTION_DATE
-        defaultFlowDetailsShouldNotBeFound("transactionDate.lessThan=" + DEFAULT_TRANSACTION_DATE);
-
-        // Get all the flowDetailsList where transactionDate is less than UPDATED_TRANSACTION_DATE
-        defaultFlowDetailsShouldBeFound("transactionDate.lessThan=" + UPDATED_TRANSACTION_DATE);
-    }
-
-    @Test
-    @Transactional
-    public void getAllFlowDetailsByTransactionDateIsGreaterThanSomething() throws Exception {
-        // Initialize the database
-        flowDetailsRepository.saveAndFlush(flowDetails);
-
-        // Get all the flowDetailsList where transactionDate is greater than DEFAULT_TRANSACTION_DATE
-        defaultFlowDetailsShouldNotBeFound("transactionDate.greaterThan=" + DEFAULT_TRANSACTION_DATE);
-
-        // Get all the flowDetailsList where transactionDate is greater than SMALLER_TRANSACTION_DATE
-        defaultFlowDetailsShouldBeFound("transactionDate.greaterThan=" + SMALLER_TRANSACTION_DATE);
-    }
-
-
-    @Test
-    @Transactional
     public void getAllFlowDetailsByTransactionIdIsEqualToSomething() throws Exception {
         // Initialize the database
         flowDetailsRepository.saveAndFlush(flowDetails);
@@ -1463,6 +1409,7 @@ public class FlowDetailsResourceIT {
         em.persist(flowId);
         em.flush();
         flowDetails.setFlowId(flowId);
+        flowId.setFlowId(flowDetails);
         flowDetailsRepository.saveAndFlush(flowDetails);
         Long flowIdId = flowId.getId();
 

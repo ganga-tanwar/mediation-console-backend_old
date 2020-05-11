@@ -1,7 +1,7 @@
 package com.dav.optimal.mediation.console.service.dto;
 
 import io.swagger.annotations.ApiModel;
-import java.time.LocalDate;
+import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -40,15 +40,13 @@ public class MediationUsersDTO implements Serializable {
     private String createdBy;
 
     @NotNull
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @Size(max = 100)
     private String modifiedBy;
 
-    private LocalDate modifiedDate;
+    private Instant modifiedDate;
 
-
-    private Long mediationUserIdId;
     
     public Long getId() {
         return id;
@@ -114,11 +112,11 @@ public class MediationUsersDTO implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -130,20 +128,12 @@ public class MediationUsersDTO implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDate getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
-    }
-
-    public Long getMediationUserIdId() {
-        return mediationUserIdId;
-    }
-
-    public void setMediationUserIdId(Long mediationUserRoleMappingsId) {
-        this.mediationUserIdId = mediationUserRoleMappingsId;
     }
 
     @Override
@@ -181,7 +171,6 @@ public class MediationUsersDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", modifiedBy='" + getModifiedBy() + "'" +
             ", modifiedDate='" + getModifiedDate() + "'" +
-            ", mediationUserIdId=" + getMediationUserIdId() +
             "}";
     }
 }

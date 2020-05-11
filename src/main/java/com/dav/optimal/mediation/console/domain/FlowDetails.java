@@ -1,13 +1,13 @@
 package com.dav.optimal.mediation.console.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -53,7 +53,7 @@ public class FlowDetails implements Serializable {
 
     @NotNull
     @Column(name = "transaction_date", nullable = false)
-    private LocalDate transactionDate;
+    private Instant transactionDate;
 
     @NotNull
     @Column(name = "transaction_id", nullable = false)
@@ -81,8 +81,8 @@ public class FlowDetails implements Serializable {
     @Column(name = "acknowledgment_received", length = 100)
     private String acknowledgmentReceived;
 
-    @ManyToOne
-    @JsonIgnoreProperties("flowIds")
+    @OneToOne(mappedBy = "flowId")
+    @JsonIgnore
     private FlowEventDetails flowId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -172,16 +172,16 @@ public class FlowDetails implements Serializable {
         this.fileName = fileName;
     }
 
-    public LocalDate getTransactionDate() {
+    public Instant getTransactionDate() {
         return transactionDate;
     }
 
-    public FlowDetails transactionDate(LocalDate transactionDate) {
+    public FlowDetails transactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
         return this;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
     }
 

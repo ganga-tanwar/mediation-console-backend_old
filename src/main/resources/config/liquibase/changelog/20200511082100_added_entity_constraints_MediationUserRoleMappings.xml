@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!--
+        Added the constraints for entity MediationUserRoleMappings.
+    -->
+    <changeSet id="20200511082100-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="mediation_user_id_id"
+                                 baseTableName="mediation_user_role_mappings"
+                                 constraintName="fk_mediation_user_role_mappings_mediation_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="mediation_users"/>
+
+        <addForeignKeyConstraint baseColumnNames="mediation_role_id_id"
+                                 baseTableName="mediation_user_role_mappings"
+                                 constraintName="fk_mediation_user_role_mappings_mediation_role_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="mediation_roles"/>
+
+    </changeSet>
+</databaseChangeLog>

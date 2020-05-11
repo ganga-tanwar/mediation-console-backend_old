@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link FlowDetails}.
@@ -55,6 +56,21 @@ public class FlowDetailsService {
     public List<FlowDetailsDTO> findAll() {
         log.debug("Request to get all FlowDetails");
         return flowDetailsRepository.findAll().stream()
+            .map(flowDetailsMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+
+    /**
+     *  Get all the flowDetails where FlowId is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true) 
+    public List<FlowDetailsDTO> findAllWhereFlowIdIsNull() {
+        log.debug("Request to get all flowDetails where FlowId is null");
+        return StreamSupport
+            .stream(flowDetailsRepository.findAll().spliterator(), false)
+            .filter(flowDetails -> flowDetails.getFlowId() == null)
             .map(flowDetailsMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

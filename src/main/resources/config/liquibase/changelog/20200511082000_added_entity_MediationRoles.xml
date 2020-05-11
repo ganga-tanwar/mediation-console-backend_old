@@ -24,9 +24,6 @@
             <column name="role_description" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
-            <column name="mediation_role_id_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>

@@ -24,17 +24,25 @@
             <column name="created_by" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
-            <column name="created_date" type="date">
+            <column name="created_date" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="modified_by" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
-            <column name="modified_date" type="date">
+            <column name="modified_date" type="datetime">
                 <constraints nullable="true" />
+            </column>
+            <column name="mediation_user_id_id" type="bigint">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_mediation_user_role_mappings_mediation_user_id_id" />
+            </column>
+            <column name="mediation_role_id_id" type="bigint">
+                <constraints unique="true" nullable="false" uniqueConstraintName="ux_mediation_user_role_mappings_mediation_role_id_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="mediation_user_role_mappings" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="mediation_user_role_mappings" columnName="modified_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200511082100-1-relations" author="jhipster">
@@ -59,9 +67,11 @@
             <column name="mediation_user_id" type="${uuidType}"/>
             <column name="mediation_role_id" type="${uuidType}"/>
             <column name="created_by" type="string"/>
-            <column name="created_date" type="date"/>
+            <column name="created_date" type="datetime"/>
             <column name="modified_by" type="string"/>
-            <column name="modified_date" type="date"/>
+            <column name="modified_date" type="datetime"/>
+            <column name="mediation_user_id_id" type="numeric"/>
+            <column name="mediation_role_id_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

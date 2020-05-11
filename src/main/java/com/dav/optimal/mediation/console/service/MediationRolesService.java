@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link MediationRoles}.
@@ -55,6 +56,21 @@ public class MediationRolesService {
     public List<MediationRolesDTO> findAll() {
         log.debug("Request to get all MediationRoles");
         return mediationRolesRepository.findAll().stream()
+            .map(mediationRolesMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+
+    /**
+     *  Get all the mediationRoles where MediationRoleId is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true) 
+    public List<MediationRolesDTO> findAllWhereMediationRoleIdIsNull() {
+        log.debug("Request to get all mediationRoles where MediationRoleId is null");
+        return StreamSupport
+            .stream(mediationRolesRepository.findAll().spliterator(), false)
+            .filter(mediationRoles -> mediationRoles.getMediationRoleId() == null)
             .map(mediationRolesMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

@@ -9,13 +9,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link MediationRoles} and its DTO {@link MediationRolesDTO}.
  */
-@Mapper(componentModel = "spring", uses = {MediationUserRoleMappingsMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface MediationRolesMapper extends EntityMapper<MediationRolesDTO, MediationRoles> {
 
-    @Mapping(source = "mediationRoleId.id", target = "mediationRoleIdId")
-    MediationRolesDTO toDto(MediationRoles mediationRoles);
 
-    @Mapping(source = "mediationRoleIdId", target = "mediationRoleId")
+    @Mapping(target = "mediationRoleId", ignore = true)
     MediationRoles toEntity(MediationRolesDTO mediationRolesDTO);
 
     default MediationRoles fromId(Long id) {
