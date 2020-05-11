@@ -77,13 +77,12 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "otherEntityName": "flowDetails",
-            "otherEntityRelationshipName": "flowId",
+            "otherEntityRelationshipName": "flowEventDetails",
             "relationshipValidateRules": "required",
             "relationshipName": "flowId",
-            "otherEntityField": "id",
-            "ownerSide": true
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20200511082300",

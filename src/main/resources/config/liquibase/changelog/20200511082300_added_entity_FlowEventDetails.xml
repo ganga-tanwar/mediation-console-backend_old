@@ -43,7 +43,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="flow_id_id" type="bigint">
-                <constraints unique="true" nullable="false" uniqueConstraintName="ux_flow_event_details_flow_id_id" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

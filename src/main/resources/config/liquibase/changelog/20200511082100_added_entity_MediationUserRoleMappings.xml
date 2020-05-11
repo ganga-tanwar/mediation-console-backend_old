@@ -34,10 +34,10 @@
                 <constraints nullable="true" />
             </column>
             <column name="mediation_user_id_id" type="bigint">
-                <constraints unique="true" nullable="false" uniqueConstraintName="ux_mediation_user_role_mappings_mediation_user_id_id" />
+                <constraints nullable="false" />
             </column>
             <column name="mediation_role_id_id" type="bigint">
-                <constraints unique="true" nullable="false" uniqueConstraintName="ux_mediation_user_role_mappings_mediation_role_id_id" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

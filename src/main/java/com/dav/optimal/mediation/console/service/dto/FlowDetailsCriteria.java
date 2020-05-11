@@ -54,8 +54,6 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
 
     private StringFilter acknowledgmentReceived;
 
-    private LongFilter flowIdId;
-
     public FlowDetailsCriteria() {
     }
 
@@ -74,7 +72,6 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
         this.destinationEndpointInterface = other.destinationEndpointInterface == null ? null : other.destinationEndpointInterface.copy();
         this.acknowledgmentExpected = other.acknowledgmentExpected == null ? null : other.acknowledgmentExpected.copy();
         this.acknowledgmentReceived = other.acknowledgmentReceived == null ? null : other.acknowledgmentReceived.copy();
-        this.flowIdId = other.flowIdId == null ? null : other.flowIdId.copy();
     }
 
     @Override
@@ -194,14 +191,6 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
         this.acknowledgmentReceived = acknowledgmentReceived;
     }
 
-    public LongFilter getFlowIdId() {
-        return flowIdId;
-    }
-
-    public void setFlowIdId(LongFilter flowIdId) {
-        this.flowIdId = flowIdId;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -226,8 +215,7 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
             Objects.equals(sourceEndpointInterface, that.sourceEndpointInterface) &&
             Objects.equals(destinationEndpointInterface, that.destinationEndpointInterface) &&
             Objects.equals(acknowledgmentExpected, that.acknowledgmentExpected) &&
-            Objects.equals(acknowledgmentReceived, that.acknowledgmentReceived) &&
-            Objects.equals(flowIdId, that.flowIdId);
+            Objects.equals(acknowledgmentReceived, that.acknowledgmentReceived);
     }
 
     @Override
@@ -246,8 +234,7 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
         sourceEndpointInterface,
         destinationEndpointInterface,
         acknowledgmentExpected,
-        acknowledgmentReceived,
-        flowIdId
+        acknowledgmentReceived
         );
     }
 
@@ -268,7 +255,6 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
                 (destinationEndpointInterface != null ? "destinationEndpointInterface=" + destinationEndpointInterface + ", " : "") +
                 (acknowledgmentExpected != null ? "acknowledgmentExpected=" + acknowledgmentExpected + ", " : "") +
                 (acknowledgmentReceived != null ? "acknowledgmentReceived=" + acknowledgmentReceived + ", " : "") +
-                (flowIdId != null ? "flowIdId=" + flowIdId + ", " : "") +
             "}";
     }
 

@@ -1,6 +1,5 @@
 package com.dav.optimal.mediation.console.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -35,10 +34,6 @@ public class MediationRoles implements Serializable {
     @Size(max = 100)
     @Column(name = "role_description", length = 100)
     private String roleDescription;
-
-    @OneToOne(mappedBy = "mediationRoleId")
-    @JsonIgnore
-    private MediationUserRoleMappings mediationRoleId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -86,19 +81,6 @@ public class MediationRoles implements Serializable {
 
     public void setRoleDescription(String roleDescription) {
         this.roleDescription = roleDescription;
-    }
-
-    public MediationUserRoleMappings getMediationRoleId() {
-        return mediationRoleId;
-    }
-
-    public MediationRoles mediationRoleId(MediationUserRoleMappings mediationUserRoleMappings) {
-        this.mediationRoleId = mediationUserRoleMappings;
-        return this;
-    }
-
-    public void setMediationRoleId(MediationUserRoleMappings mediationUserRoleMappings) {
-        this.mediationRoleId = mediationUserRoleMappings;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

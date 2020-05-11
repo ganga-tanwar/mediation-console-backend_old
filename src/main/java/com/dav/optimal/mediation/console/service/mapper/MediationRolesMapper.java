@@ -13,8 +13,6 @@ import org.mapstruct.*;
 public interface MediationRolesMapper extends EntityMapper<MediationRolesDTO, MediationRoles> {
 
 
-    @Mapping(target = "mediationRoleId", ignore = true)
-    MediationRoles toEntity(MediationRolesDTO mediationRolesDTO);
 
     default MediationRoles fromId(Long id) {
         if (id == null) {

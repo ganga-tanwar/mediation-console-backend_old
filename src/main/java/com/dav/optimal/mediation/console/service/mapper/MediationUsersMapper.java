@@ -13,8 +13,6 @@ import org.mapstruct.*;
 public interface MediationUsersMapper extends EntityMapper<MediationUsersDTO, MediationUsers> {
 
 
-    @Mapping(target = "mediationUserId", ignore = true)
-    MediationUsers toEntity(MediationUsersDTO mediationUsersDTO);
 
     default MediationUsers fromId(Long id) {
         if (id == null) {

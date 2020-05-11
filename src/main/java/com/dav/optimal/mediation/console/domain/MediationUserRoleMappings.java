@@ -1,5 +1,6 @@
 package com.dav.optimal.mediation.console.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -47,14 +48,14 @@ public class MediationUserRoleMappings implements Serializable {
     @Column(name = "modified_date")
     private Instant modifiedDate;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("mediationUserRoleMappings")
     private MediationUsers mediationUserId;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("mediationUserRoleMappings")
     private MediationRoles mediationRoleId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
