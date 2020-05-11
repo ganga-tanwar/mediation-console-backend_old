@@ -2,7 +2,6 @@ package com.dav.optimal.mediation.console.web.rest;
 
 import com.dav.optimal.mediation.console.MediationConsoleApp;
 import com.dav.optimal.mediation.console.domain.FlowDetails;
-import com.dav.optimal.mediation.console.domain.FlowEventDetails;
 import com.dav.optimal.mediation.console.repository.FlowDetailsRepository;
 import com.dav.optimal.mediation.console.service.FlowDetailsService;
 import com.dav.optimal.mediation.console.service.dto.FlowDetailsDTO;
@@ -1397,27 +1396,6 @@ public class FlowDetailsResourceIT {
 
         // Get all the flowDetailsList where acknowledgmentReceived does not contain UPDATED_ACKNOWLEDGMENT_RECEIVED
         defaultFlowDetailsShouldBeFound("acknowledgmentReceived.doesNotContain=" + UPDATED_ACKNOWLEDGMENT_RECEIVED);
-    }
-
-
-    @Test
-    @Transactional
-    public void getAllFlowDetailsByFlowIdIsEqualToSomething() throws Exception {
-        // Initialize the database
-        flowDetailsRepository.saveAndFlush(flowDetails);
-        FlowEventDetails flowId = FlowEventDetailsResourceIT.createEntity(em);
-        em.persist(flowId);
-        em.flush();
-        flowDetails.setFlowId(flowId);
-        flowId.setFlowId(flowDetails);
-        flowDetailsRepository.saveAndFlush(flowDetails);
-        Long flowIdId = flowId.getId();
-
-        // Get all the flowDetailsList where flowId equals to flowIdId
-        defaultFlowDetailsShouldBeFound("flowIdId.equals=" + flowIdId);
-
-        // Get all the flowDetailsList where flowId equals to flowIdId + 1
-        defaultFlowDetailsShouldNotBeFound("flowIdId.equals=" + (flowIdId + 1));
     }
 
     /**

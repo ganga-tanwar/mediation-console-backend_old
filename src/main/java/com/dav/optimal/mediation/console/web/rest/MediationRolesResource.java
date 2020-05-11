@@ -17,7 +17,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.dav.optimal.mediation.console.domain.MediationRoles}.
@@ -82,15 +81,10 @@ public class MediationRolesResource {
     /**
      * {@code GET  /mediation-roles} : get all the mediationRoles.
      *
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of mediationRoles in body.
      */
     @GetMapping("/mediation-roles")
-    public List<MediationRolesDTO> getAllMediationRoles(@RequestParam(required = false) String filter) {
-        if ("mediationroleid-is-null".equals(filter)) {
-            log.debug("REST request to get all MediationRoless where mediationRoleId is null");
-            return mediationRolesService.findAllWhereMediationRoleIdIsNull();
-        }
+    public List<MediationRolesDTO> getAllMediationRoles() {
         log.debug("REST request to get all MediationRoles");
         return mediationRolesService.findAll();
     }

@@ -130,10 +130,6 @@ public class FlowDetailsQueryService extends QueryService<FlowDetails> {
             if (criteria.getAcknowledgmentReceived() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getAcknowledgmentReceived(), FlowDetails_.acknowledgmentReceived));
             }
-            if (criteria.getFlowIdId() != null) {
-                specification = specification.and(buildSpecification(criteria.getFlowIdId(),
-                    root -> root.join(FlowDetails_.flowId, JoinType.LEFT).get(FlowEventDetails_.id)));
-            }
         }
         return specification;
     }

@@ -26,15 +26,7 @@
             "fieldValidateRulesMaxlength": "100"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "mediationUserRoleMappings",
-            "otherEntityRelationshipName": "mediationRoleId",
-            "relationshipName": "mediationRoleId",
-            "ownerSide": false
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20200511082000",
     "javadoc": "Class representing Roles",
     "entityTableName": "mediation_roles",

@@ -72,15 +72,7 @@
             "fieldType": "Instant"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "mediationUserRoleMappings",
-            "otherEntityRelationshipName": "mediationUserId",
-            "relationshipName": "mediationUserId",
-            "ownerSide": false
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20200511081900",
     "javadoc": "Class representing Users",
     "entityTableName": "mediation_users",

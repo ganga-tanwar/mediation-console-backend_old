@@ -13,8 +13,6 @@ import org.mapstruct.*;
 public interface FlowDetailsMapper extends EntityMapper<FlowDetailsDTO, FlowDetails> {
 
 
-    @Mapping(target = "flowId", ignore = true)
-    FlowDetails toEntity(FlowDetailsDTO flowDetailsDTO);
 
     default FlowDetails fromId(Long id) {
         if (id == null) {

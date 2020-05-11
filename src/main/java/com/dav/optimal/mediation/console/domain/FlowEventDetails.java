@@ -1,5 +1,6 @@
 package com.dav.optimal.mediation.console.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -64,9 +65,9 @@ public class FlowEventDetails implements Serializable {
     @Column(name = "error_code_retriable", nullable = false)
     private String errorCodeRetriable;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("flowEventDetails")
     private FlowDetails flowId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

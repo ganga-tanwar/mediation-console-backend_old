@@ -1,6 +1,5 @@
 package com.dav.optimal.mediation.console.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -80,10 +79,6 @@ public class FlowDetails implements Serializable {
     @Size(max = 100)
     @Column(name = "acknowledgment_received", length = 100)
     private String acknowledgmentReceived;
-
-    @OneToOne(mappedBy = "flowId")
-    @JsonIgnore
-    private FlowEventDetails flowId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -261,19 +256,6 @@ public class FlowDetails implements Serializable {
 
     public void setAcknowledgmentReceived(String acknowledgmentReceived) {
         this.acknowledgmentReceived = acknowledgmentReceived;
-    }
-
-    public FlowEventDetails getFlowId() {
-        return flowId;
-    }
-
-    public FlowDetails flowId(FlowEventDetails flowEventDetails) {
-        this.flowId = flowEventDetails;
-        return this;
-    }
-
-    public void setFlowId(FlowEventDetails flowEventDetails) {
-        this.flowId = flowEventDetails;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
