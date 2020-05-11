@@ -67,7 +67,7 @@ entity FlowEventDetails {
 }
 
 // defining multiple ManyToOne relationships with comments
-relationship OneToOne {
+relationship ManyToOne {
     FlowEventDetails{flowId required} to FlowDetails{flowId},
 	MediationUserRoleMappings{mediationUserId required} to MediationUsers{mediationUserId},
 	MediationUserRoleMappings{mediationRoleId required} to MediationRoles{mediationRoleId}
