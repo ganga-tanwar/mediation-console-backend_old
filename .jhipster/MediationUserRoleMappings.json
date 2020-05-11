@@ -1,0 +1,76 @@
+{
+    "name": "MediationUserRoleMappings",
+    "fields": [
+        {
+            "fieldName": "mediationUserId",
+            "fieldType": "UUID",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mediationRoleId",
+            "fieldType": "UUID",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modifiedBy",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "mediationUsers",
+            "otherEntityRelationshipName": "mediationUserId",
+            "relationshipValidateRules": "required",
+            "relationshipName": "mediationUserId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "mediationRoles",
+            "otherEntityRelationshipName": "mediationRoleId",
+            "relationshipValidateRules": "required",
+            "relationshipName": "mediationRoleId"
+        }
+    ],
+    "changelogDate": "20200511082100",
+    "javadoc": "Class representing Roles",
+    "entityTableName": "mediation_user_role_mappings",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "MediationConsole",
+    "applications": "*",
+    "microserviceName": "MediationConsole"
+}
