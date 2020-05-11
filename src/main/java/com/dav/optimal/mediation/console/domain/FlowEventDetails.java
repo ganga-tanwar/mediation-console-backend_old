@@ -6,9 +6,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -40,7 +38,7 @@ public class FlowEventDetails implements Serializable {
 
     @NotNull
     @Column(name = "transaction_date", nullable = false)
-    private LocalDate transactionDate;
+    private Instant transactionDate;
 
     @NotNull
     @Size(max = 100)
@@ -66,8 +64,10 @@ public class FlowEventDetails implements Serializable {
     @Column(name = "error_code_retriable", nullable = false)
     private String errorCodeRetriable;
 
-    @OneToMany(mappedBy = "flowId")
-    private Set<FlowDetails> flowIds = new HashSet<>();
+    @OneToOne(optional = false)
+    @NotNull
+    @JoinColumn(unique = true)
+    private FlowDetails flowId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -117,16 +117,16 @@ public class FlowEventDetails implements Serializable {
         this.flowId = flowId;
     }
 
-    public LocalDate getTransactionDate() {
+    public Instant getTransactionDate() {
         return transactionDate;
     }
 
-    public FlowEventDetails transactionDate(LocalDate transactionDate) {
+    public FlowEventDetails transactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
         return this;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -195,29 +195,17 @@ public class FlowEventDetails implements Serializable {
         this.errorCodeRetriable = errorCodeRetriable;
     }
 
-    public Set<FlowDetails> getFlowIds() {
-        return flowIds;
+    public FlowDetails getFlowId() {
+        return flowId;
     }
 
-    public FlowEventDetails flowIds(Set<FlowDetails> flowDetails) {
-        this.flowIds = flowDetails;
+    public FlowEventDetails flowId(FlowDetails flowDetails) {
+        this.flowId = flowDetails;
         return this;
     }
 
-    public FlowEventDetails addFlowId(FlowDetails flowDetails) {
-        this.flowIds.add(flowDetails);
-        flowDetails.setFlowId(this);
-        return this;
-    }
-
-    public FlowEventDetails removeFlowId(FlowDetails flowDetails) {
-        this.flowIds.remove(flowDetails);
-        flowDetails.setFlowId(null);
-        return this;
-    }
-
-    public void setFlowIds(Set<FlowDetails> flowDetails) {
-        this.flowIds = flowDetails;
+    public void setFlowId(FlowDetails flowDetails) {
+        this.flowId = flowDetails;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

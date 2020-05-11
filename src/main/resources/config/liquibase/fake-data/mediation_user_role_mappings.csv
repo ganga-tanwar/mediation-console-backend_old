@@ -1,11 +1,11 @@
-id;mediation_user_id;mediation_role_id;created_by;created_date;modified_by;modified_date
-1;1648013e-0e4d-403e-b900-1ee259f061c1;c084b3ab-3f88-45e0-a458-280d18b9b61d;payment Investor Analyst;2020-05-10;Throughway Small Center;2020-05-10
-2;e117cd52-c21f-473e-81bd-b9688bca1929;29aa979b-0cf8-438a-b83c-27b0dc0bff56;Auto Loan Account virtual;2020-05-10;Coordinator implementation;2020-05-10
-3;613f795f-6e06-4169-b0dd-3f8893d12932;bd3b8b65-3c2a-4dd6-836a-e66130dc7a93;bottom-line;2020-05-11;deposit;2020-05-10
-4;c5d80d81-e8e2-4a80-a8fe-817d6ba7d482;36c66587-9a08-4ab5-90e4-0e21e05a9e9f;Fully-configurable;2020-05-11;connect;2020-05-10
-5;686f8509-23e8-492c-a752-d5107d16e43d;fcfbf914-4e0f-4662-9a6e-9fa7d09e0ce1;Dynamic;2020-05-11;Granite;2020-05-10
-6;9dc7d939-886c-4267-b7a8-a1e6830a12e7;73c2d554-e85e-4253-ae09-eed05cf87443;alarm;2020-05-10;Games Beauty vortals;2020-05-11
-7;34a949ca-fab3-4156-98e3-b3fe9c7fc72d;f52ee07b-121b-42a3-8ab6-b6750c5c47bd;Security invoice violet;2020-05-11;Interactions;2020-05-10
-8;446543e5-d248-42cc-a67b-9963a209d94f;71980164-70f4-4ac8-b98f-b4e504258264;Future Grocery Program;2020-05-10;Central SAS projection;2020-05-10
-9;e467e217-e7cd-4078-a3b7-ba0d8a7c787c;7aa9f270-7567-4728-933a-25df368076f3;Global;2020-05-11;neural interface virtual;2020-05-10
-10;2077895c-12b9-4292-8651-1e7e3992c4fe;4b4622c2-be13-4e56-8cf7-327b5624f3d9;Global protocol JSON;2020-05-11;composite Avon;2020-05-11
+id;mediation_user_id;mediation_role_id;created_by;created_date;modified_by;modified_date;mediation_user_id_id;mediation_role_id_id
+1;1648013e-0e4d-403e-b900-1ee259f061c1;c084b3ab-3f88-45e0-a458-280d18b9b61d;payment Investor Analyst;2020-05-10T18:53:42;Throughway Small Center;2020-05-10T16:03:26;1;1
+2;e117cd52-c21f-473e-81bd-b9688bca1929;29aa979b-0cf8-438a-b83c-27b0dc0bff56;Auto Loan Account virtual;2020-05-10T19:54:21;Coordinator implementation;2020-05-10T20:57:41;2;2
+3;613f795f-6e06-4169-b0dd-3f8893d12932;bd3b8b65-3c2a-4dd6-836a-e66130dc7a93;bottom-line;2020-05-11T07:20:28;deposit;2020-05-10T19:42:40;3;3
+4;c5d80d81-e8e2-4a80-a8fe-817d6ba7d482;36c66587-9a08-4ab5-90e4-0e21e05a9e9f;Fully-configurable;2020-05-11T03:38:41;connect;2020-05-10T18:55:34;4;4
+5;686f8509-23e8-492c-a752-d5107d16e43d;fcfbf914-4e0f-4662-9a6e-9fa7d09e0ce1;Dynamic;2020-05-11T01:32:44;Granite;2020-05-10T19:37:17;5;5
+6;9dc7d939-886c-4267-b7a8-a1e6830a12e7;73c2d554-e85e-4253-ae09-eed05cf87443;alarm;2020-05-10T12:18:07;Games Beauty vortals;2020-05-11T01:15:07;6;6
+7;34a949ca-fab3-4156-98e3-b3fe9c7fc72d;f52ee07b-121b-42a3-8ab6-b6750c5c47bd;Security invoice violet;2020-05-11T06:45:33;Interactions;2020-05-10T21:11:22;7;7
+8;446543e5-d248-42cc-a67b-9963a209d94f;71980164-70f4-4ac8-b98f-b4e504258264;Future Grocery Program;2020-05-10T12:01:05;Central SAS projection;2020-05-10T15:32:38;8;8
+9;e467e217-e7cd-4078-a3b7-ba0d8a7c787c;7aa9f270-7567-4728-933a-25df368076f3;Global;2020-05-11T05:15:22;neural interface virtual;2020-05-10T09:05:29;9;9
+10;2077895c-12b9-4292-8651-1e7e3992c4fe;4b4622c2-be13-4e56-8cf7-327b5624f3d9;Global protocol JSON;2020-05-11T02:26:42;composite Avon;2020-05-11T00:03:03;10;10

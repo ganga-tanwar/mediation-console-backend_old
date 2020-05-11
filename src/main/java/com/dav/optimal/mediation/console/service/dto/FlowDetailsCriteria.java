@@ -10,7 +10,7 @@ import io.github.jhipster.service.filter.FloatFilter;
 import io.github.jhipster.service.filter.IntegerFilter;
 import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.service.filter.StringFilter;
-import io.github.jhipster.service.filter.LocalDateFilter;
+import io.github.jhipster.service.filter.InstantFilter;
 import io.github.jhipster.service.filter.UUIDFilter;
 
 /**
@@ -40,7 +40,7 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
 
     private StringFilter fileName;
 
-    private LocalDateFilter transactionDate;
+    private InstantFilter transactionDate;
 
     private UUIDFilter transactionId;
 
@@ -138,11 +138,11 @@ public class FlowDetailsCriteria implements Serializable, Criteria {
         this.fileName = fileName;
     }
 
-    public LocalDateFilter getTransactionDate() {
+    public InstantFilter getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDateFilter transactionDate) {
+    public void setTransactionDate(InstantFilter transactionDate) {
         this.transactionDate = transactionDate;
     }
 

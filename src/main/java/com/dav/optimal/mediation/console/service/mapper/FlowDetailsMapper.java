@@ -9,13 +9,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link FlowDetails} and its DTO {@link FlowDetailsDTO}.
  */
-@Mapper(componentModel = "spring", uses = {FlowEventDetailsMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface FlowDetailsMapper extends EntityMapper<FlowDetailsDTO, FlowDetails> {
 
-    @Mapping(source = "flowId.id", target = "flowIdId")
-    FlowDetailsDTO toDto(FlowDetails flowDetails);
 
-    @Mapping(source = "flowIdId", target = "flowId")
+    @Mapping(target = "flowId", ignore = true)
     FlowDetails toEntity(FlowDetailsDTO flowDetailsDTO);
 
     default FlowDetails fromId(Long id) {

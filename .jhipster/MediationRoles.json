@@ -28,11 +28,11 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
+            "relationshipType": "one-to-one",
             "otherEntityName": "mediationUserRoleMappings",
             "otherEntityRelationshipName": "mediationRoleId",
             "relationshipName": "mediationRoleId",
-            "otherEntityField": "id"
+            "ownerSide": false
         }
     ],
     "changelogDate": "20200511082000",

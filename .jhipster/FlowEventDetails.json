@@ -26,7 +26,7 @@
         },
         {
             "fieldName": "transactionDate",
-            "fieldType": "LocalDate",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
@@ -77,11 +77,13 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "otherEntityName": "flowDetails",
             "otherEntityRelationshipName": "flowId",
             "relationshipValidateRules": "required",
-            "relationshipName": "flowId"
+            "relationshipName": "flowId",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20200511082300",

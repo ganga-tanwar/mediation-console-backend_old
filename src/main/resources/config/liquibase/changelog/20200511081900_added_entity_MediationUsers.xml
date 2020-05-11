@@ -36,20 +36,19 @@
             <column name="created_by" type="varchar(100)">
                 <constraints nullable="false" />
             </column>
-            <column name="created_date" type="date">
+            <column name="created_date" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="modified_by" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
-            <column name="modified_date" type="date">
-                <constraints nullable="true" />
-            </column>
-            <column name="mediation_user_id_id" type="bigint">
+            <column name="modified_date" type="datetime">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="mediation_users" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="mediation_users" columnName="modified_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200511081900-1-relations" author="jhipster">
@@ -78,9 +77,9 @@
             <column name="contact_no" type="numeric"/>
             <column name="active" type="boolean"/>
             <column name="created_by" type="string"/>
-            <column name="created_date" type="date"/>
+            <column name="created_date" type="datetime"/>
             <column name="modified_by" type="string"/>
-            <column name="modified_date" type="date"/>
+            <column name="modified_date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

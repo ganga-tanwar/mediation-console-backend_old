@@ -24,8 +24,6 @@ public class MediationRolesDTO implements Serializable {
     @Size(max = 100)
     private String roleDescription;
 
-
-    private Long mediationRoleIdId;
     
     public Long getId() {
         return id;
@@ -59,14 +57,6 @@ public class MediationRolesDTO implements Serializable {
         this.roleDescription = roleDescription;
     }
 
-    public Long getMediationRoleIdId() {
-        return mediationRoleIdId;
-    }
-
-    public void setMediationRoleIdId(Long mediationUserRoleMappingsId) {
-        this.mediationRoleIdId = mediationUserRoleMappingsId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -95,7 +85,6 @@ public class MediationRolesDTO implements Serializable {
             ", mediationRoleId='" + getMediationRoleId() + "'" +
             ", roleName='" + getRoleName() + "'" +
             ", roleDescription='" + getRoleDescription() + "'" +
-            ", mediationRoleIdId=" + getMediationRoleIdId() +
             "}";
     }
 }

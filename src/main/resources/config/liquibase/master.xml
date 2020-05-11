@@ -23,5 +23,7 @@
     <include file="config/liquibase/changelog/20200511081900_added_entity_constraints_MediationUsers.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200511082000_added_entity_constraints_MediationRoles.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200511082200_added_entity_constraints_FlowDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200511082100_added_entity_constraints_MediationUserRoleMappings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200511082300_added_entity_constraints_FlowEventDetails.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

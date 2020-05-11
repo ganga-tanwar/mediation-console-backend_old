@@ -1,6 +1,6 @@
 package com.dav.optimal.mediation.console.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.UUID;
 
 /**
@@ -57,17 +57,17 @@ public class MediationUsers implements Serializable {
 
     @NotNull
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private Instant createdDate;
 
     @Size(max = 100)
     @Column(name = "modified_by", length = 100)
     private String modifiedBy;
 
     @Column(name = "modified_date")
-    private LocalDate modifiedDate;
+    private Instant modifiedDate;
 
-    @ManyToOne
-    @JsonIgnoreProperties("mediationUserIds")
+    @OneToOne(mappedBy = "mediationUserId")
+    @JsonIgnore
     private MediationUserRoleMappings mediationUserId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -170,16 +170,16 @@ public class MediationUsers implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public LocalDate getCreatedDate() {
+    public Instant getCreatedDate() {
         return createdDate;
     }
 
-    public MediationUsers createdDate(LocalDate createdDate) {
+    public MediationUsers createdDate(Instant createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(Instant createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -196,16 +196,16 @@ public class MediationUsers implements Serializable {
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDate getModifiedDate() {
+    public Instant getModifiedDate() {
         return modifiedDate;
     }
 
-    public MediationUsers modifiedDate(LocalDate modifiedDate) {
+    public MediationUsers modifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
 
-    public void setModifiedDate(LocalDate modifiedDate) {
+    public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

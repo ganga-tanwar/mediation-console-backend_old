@@ -1,7 +1,7 @@
 package com.dav.optimal.mediation.console.service.dto;
 
 import io.swagger.annotations.ApiModel;
-import java.time.LocalDate;
+import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -37,7 +37,7 @@ public class FlowDetailsDTO implements Serializable {
     private String fileName;
 
     @NotNull
-    private LocalDate transactionDate;
+    private Instant transactionDate;
 
     @NotNull
     private UUID transactionId;
@@ -59,8 +59,6 @@ public class FlowDetailsDTO implements Serializable {
     @Size(max = 100)
     private String acknowledgmentReceived;
 
-
-    private Long flowIdId;
     
     public Long getId() {
         return id;
@@ -118,11 +116,11 @@ public class FlowDetailsDTO implements Serializable {
         this.fileName = fileName;
     }
 
-    public LocalDate getTransactionDate() {
+    public Instant getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(Instant transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -174,14 +172,6 @@ public class FlowDetailsDTO implements Serializable {
         this.acknowledgmentReceived = acknowledgmentReceived;
     }
 
-    public Long getFlowIdId() {
-        return flowIdId;
-    }
-
-    public void setFlowIdId(Long flowEventDetailsId) {
-        this.flowIdId = flowEventDetailsId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -220,7 +210,6 @@ public class FlowDetailsDTO implements Serializable {
             ", destinationEndpointInterface='" + getDestinationEndpointInterface() + "'" +
             ", acknowledgmentExpected='" + getAcknowledgmentExpected() + "'" +
             ", acknowledgmentReceived='" + getAcknowledgmentReceived() + "'" +
-            ", flowIdId=" + getFlowIdId() +
             "}";
     }
 }

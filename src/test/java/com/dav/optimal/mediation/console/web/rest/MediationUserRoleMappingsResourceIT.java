@@ -19,8 +19,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,14 +47,14 @@ public class MediationUserRoleMappingsResourceIT {
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String DEFAULT_MODIFIED_BY = "AAAAAAAAAA";
     private static final String UPDATED_MODIFIED_BY = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final Instant DEFAULT_MODIFIED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_MODIFIED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private MediationUserRoleMappingsRepository mediationUserRoleMappingsRepository;
@@ -96,7 +96,7 @@ public class MediationUserRoleMappingsResourceIT {
         } else {
             mediationUsers = TestUtil.findAll(em, MediationUsers.class).get(0);
         }
-        mediationUserRoleMappings.getMediationUserIds().add(mediationUsers);
+        mediationUserRoleMappings.setMediationUserId(mediationUsers);
         // Add required entity
         MediationRoles mediationRoles;
         if (TestUtil.findAll(em, MediationRoles.class).isEmpty()) {
@@ -106,7 +106,7 @@ public class MediationUserRoleMappingsResourceIT {
         } else {
             mediationRoles = TestUtil.findAll(em, MediationRoles.class).get(0);
         }
-        mediationUserRoleMappings.getMediationRoleIds().add(mediationRoles);
+        mediationUserRoleMappings.setMediationRoleId(mediationRoles);
         return mediationUserRoleMappings;
     }
     /**
@@ -132,7 +132,7 @@ public class MediationUserRoleMappingsResourceIT {
         } else {
             mediationUsers = TestUtil.findAll(em, MediationUsers.class).get(0);
         }
-        mediationUserRoleMappings.getMediationUserIds().add(mediationUsers);
+        mediationUserRoleMappings.setMediationUserId(mediationUsers);
         // Add required entity
         MediationRoles mediationRoles;
         if (TestUtil.findAll(em, MediationRoles.class).isEmpty()) {
@@ -142,7 +142,7 @@ public class MediationUserRoleMappingsResourceIT {
         } else {
             mediationRoles = TestUtil.findAll(em, MediationRoles.class).get(0);
         }
-        mediationUserRoleMappings.getMediationRoleIds().add(mediationRoles);
+        mediationUserRoleMappings.setMediationRoleId(mediationRoles);
         return mediationUserRoleMappings;
     }
 
